@@ -19,8 +19,11 @@ This script provides a simple interface for system administrators to monitor the
 * Required packages: df, who, cat, lsof, htop, vnstat, ss, systemctl
 
 ## Installation
-1. 
-2. Run the script: `./sysmon`
+1.     wget https://github.com/dogaegeozden/sysmon/archive/refs/heads/main.zip
+2.     unzip main.zip
+3.     cd sysmon-main
+4.     chmod u+x sysmon
+5.     ./sysmon
 
 ## Usage
 1. Run the script
