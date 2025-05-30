@@ -1,0 +1,115 @@
+#!/bin/bash
+
+##############################
+
+# SYSTEM MONITORING FUNCTIONS
+
+##############################
+
+function display_disk_space {
+    clear
+    df -h
+}
+
+function display_logged_in_users {
+    clear
+    who
+}
+
+function display_memory_info {
+    clear
+    cat /proc/meminfo
+}
+
+function display_network_connections {
+    clear
+    lsof -i
+}
+
+function display_interactive_process_viewer {
+    clear
+    htop
+}
+
+function display_network_usage {
+    clear
+    vnstat -d
+}
+
+function display_listening_sockets {
+    clear
+    ss -tupln
+}
+
+function display_services_status {
+    clear
+    systemctl list-unit-files --type=service
+}
+
+
+
+##############################
+
+# MENU
+
+##############################
+
+function menu {
+    clear
+    echo
+    echo -e "\t\t\tSys Admin Menu\n"
+    echo -e "\t1. Display disk space"
+    echo -e "\t2. Display logged on users"
+    echo -e "\t3. Display memory usage"
+    echo -e "\t4. Display network connections"
+    echo -e "\t5. Display the interactive process viewer"
+    echo -e "\t6. Display network usage"
+    echo -e "\t7. Display listening sockets"
+    echo -e "\t8. Display services' status"
+    echo -e "\t0. Exit program\n\n"
+    echo -en "\t\tEnter option: "
+    read -n 1 option
+}
+
+
+
+##############################
+
+# MAIN
+
+##############################
+
+function main {
+    while [ 1 ]
+    do
+        menu
+        case $option in
+        0)
+            break ;;
+        1)
+            display_disk_space ;;
+        2)
+            display_logged_in_users ;;
+        3)
+            display_memory_info ;;
+        4)
+            display_network_connections ;;
+        5)
+            display_interactive_process_viewer ;;
+        6)
+            display_network_usage ;;
+        7)
+            display_listening_sockets ;;
+        8)
+            display_services_status ;;
+        *)
+            clear
+            echo "Sorry, wrong selection";;
+        esac
+        echo -en "\n\n\t\t\tHit any key to continue"
+        read -n 1 line
+    done
+    clear
+}
+
+main
